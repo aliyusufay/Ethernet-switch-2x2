@@ -23,7 +23,7 @@ A functional RTL implementation of a 2x2 Ethernet packet switch, designed in Sys
 ## ✅ Status
 
 - Core logic: ✔️ Complete  
-- Testbench: 🔄 Planned or partial  
+- Testbench: ✔️ Complete
 - CRC and burst extension: 🔄 Future work
 
 ## 🚀 Author
