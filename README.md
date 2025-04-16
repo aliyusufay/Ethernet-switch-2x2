@@ -1,34 +1,48 @@
-# 2x2 Ethernet Switch (SystemVerilog)
+# 🧩 2x2 Ethernet Switch – SystemVerilog Functional Design
 
-A functional RTL implementation of a 2x2 Ethernet packet switch, designed in SystemVerilog. The switch supports dynamic address-based routing with variable packet lengths, SOP/EOP markers, and FIFO buffering.
+A synthesizable RTL model of a 2x2 Ethernet switch built in SystemVerilog. This design routes variable-length packets from input to output ports using destination address decoding, with FIFO buffering and SOP/EOP marker handling.
+
+---
 
 ## ✨ Features
 
-- Two input and two output ports (2x2) with 32-bit data paths
-- Supports variable-length packets (64B–1518B) with SOP/EOP handling
-- Per-port FIFO buffering for back-to-back or bursty traffic
-- Dynamic destination routing based on destination address (DA)
-- Modular design with top-level FSM and switching logic separated
-- Basic self-checking testbench at top-level
+- **2x2 switching**: Two inputs and two outputs with 32-bit data paths  
+- **Variable-length packets**: Handles packet sizes from 64B to 1518B  
+- **FIFO buffering**: Independent FIFOs for each output port  
+- **SOP/EOP support**: Detects Start and End of Packet markers  
+- **Address-based routing**: Destination address (DA) decoded to choose output port  
+- **Supports idle periods, back-to-back, and interleaved traffic**
+
+---
 
 ## 📂 File Structure
 
-| File/Folder | Description |
-|-------------|-------------|
-| `rtl/2x2_ethernet.sv` | Top module instantiating FIFOs and switching logic |
-| `rtl/2x2_switching_logic.sv` | Routing logic and DA decode |
-| `rtl/FIFO.sv` | FIFO implementation for buffering |
-| `tb/2x2_ethernet_tb.sv` | Top-level testbench |
+| File / Folder | Description |
+|---------------|-------------|
+| `rtl/2x2_ethernet.sv` | Top-level module (wrapper for FIFOs and switch logic) |
+| `rtl/2x2_switching_logic.sv` | Internal routing and output port selection |
+| `rtl/FIFO.sv` | FIFO module used for packet buffering |
+| `tb/2x2_ethernet_tb.sv` | Basic top-level testbench with functional stimulus |
 
-## ✅ Status
+---
 
-- Core logic: ✔️ Complete  
-- Testbench: ✔️ Complete
-- CRC and burst extension: 🔄 Future work
+## 🔄 Project Status
 
-## 🚀 Author
+- ✅ RTL: Complete and modular  
+- ✅ Testbench: Top-level functional testbench implemented  
+- 🔜 Extensions: Burst mode and CRC check (future scope)
 
-Ali Yusuf Askari Husain  
-M.Tech Microelectronics | RTL Design & Verification | Intel Intern  
+---
+
+## 🧑‍💻 Author
+
+**Ali Yusuf Askari Husain**  
+M.Tech Microelectronics | RTL & Verification | Ex-Intel Intern  
 📧 ali.yusuf.ay.110@gmail.com  
 🔗 [LinkedIn](https://www.linkedin.com/in/ali-yusuf-73746a13a/)
+
+---
+
+## 🔗 Project Link
+
+[GitHub Repo](https://github.com/aliyusufay/Ethernet-switch-2x2)
