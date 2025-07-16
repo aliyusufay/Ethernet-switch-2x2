@@ -21,7 +21,7 @@ logic wr_en_inA, wr_en_inB, wr_en_outA, wr_en_outB;
 logic rd_en_inA, rd_en_inB, rd_en_outA, rd_en_outB;
 logic full_inA, full_inB, empty_in_fifoA, empty_in_fifoB, empty_out_fifoA, empty_out_fifoB;
 
-always_ff @ (negedge resetN)
+always_ff @ (negedge resetN or posedge clk)
 if (~resetN)
 begin
 portAStall<=0;
@@ -102,8 +102,8 @@ DA_B=dsinB[3:0];
 
 wr_en_inA=(sopA && !eopA && !full_inA) ? 1:0;
 wr_en_inB=(sopB && !eopB && !full_inB) ? 1:0;
-wr_en_outA=(DA_A==1 || DA_B==1) ? 1:0;
-wr_en_outB=(DA_A==1 || DA_B==2) ? 1:0;
+wr_en_outA=(dsoutA !=='bx) ? 1:0;
+wr_en_outB=(dsoutB !=='bx) ? 1:0;
 rd_en_inA=(!empty_in_fifoA) ? 1:0;
 rd_en_inB=(!empty_in_fifoB) ? 1:0;
 rd_en_outA=(!empty_out_fifoA) ? 1:0;
