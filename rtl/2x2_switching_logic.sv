@@ -11,14 +11,7 @@ output logic [31:0]doutB
 );
 
 
-always_ff @ (posedge clk or negedge resetN)
-begin
-if (~resetN)
-begin
-doutA<=32'b0;
-doutB<=32'b0;
-end
-else
+always_ff @ (posedge clk)
 begin
 if (DA_A==4'b0001)
 doutA<=dinA;
@@ -28,6 +21,9 @@ if (DA_B==4'b0001)
 doutA<=dinB;
 if (DA_B==4'b0010)
 doutB<=dinB;
-end
+if (DA_A!==1 && DA_B!==1)
+doutA<='bx;
+if (DA_A!==2 && DA_B!==2)
+doutB<='bx;
 end
 endmodule
