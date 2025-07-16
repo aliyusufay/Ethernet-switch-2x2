@@ -36,46 +36,37 @@ sopB<=0;
 eopB<=0;
 resetN=0;#10;
 resetN=1;#10;
-
 //A to A
 sopA=1;
-inA=32'h45268871;#10;
-eopA=1;
-#10;
-sopA=0;
-eopA=0;
-#10;
-
-//A to B
-sopA=1;
-inA=32'h45268872;#10;
-eopA=1; 
-#10;
-inA=32'hx;
-sopA=0;
-eopA=0;
-#10;
-
-//B to A
-sopB=1;
-inB=32'h79944471;#10;
-eopB=1;
-#10;
-sopB=0;
-eopB=0;
-#10;
-
+inA=32'hFEDBEEF1;
 //B to B
 sopB=1;
-inB=32'h79944472;#10;
+inB=32'hDEC0_DED2;
+#10;
+eopA=1;
+sopA=0;
 eopB=1;
-#10;
-inB=32'hx;
 sopB=0;
-eopB=0;
 #10;
-
-#50;
-$stop;
+eopA=0;
+eopB=0;
+//A to B
+sopA=1;
+inA=32'hFEDBEEF2;
+//B to A
+sopB=1;
+inB=32'hDEC0_DED1;
+#10;
+eopA=1; 
+sopA=0;
+eopB=1;
+sopB=0;
+#10;
+eopA=0;
+eopB=0;
+inA='bx;
+inB='bx;
+#30;
+$finish;
 end
 endmodule
